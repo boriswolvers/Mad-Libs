@@ -38,11 +38,18 @@ public class selectTextFiles extends AppCompatActivity {
                 // checks which radiobutton is pressed by user
                 RadioButton chosen_radioButton = (RadioButton)findViewById(chosen_radioGroup);
 
-                // pass the checked button to fillForm Activity
-                Intent goToFormActivity = new Intent(selectTextFiles.this, fillForm.class);
-                goToFormActivity.putExtra("chosen_radiobutton", chosen_radioButton.getText());
-                startActivity(goToFormActivity);
-                finish();
+                // simple statement to check whether a radiobutton is checked by user
+                if (chosen_radioGroup > 0) {
+                    // pass the checked button to fillForm Activity
+                    Intent goToFormActivity = new Intent(selectTextFiles.this, fillForm.class);
+                    goToFormActivity.putExtra("chosen_radiobutton", chosen_radioButton.getText());
+                    startActivity(goToFormActivity);
+                    finish();
+                }
+                else {
+                    Toast toast = Toast.makeText(selectTextFiles.this, "Pls pick a text!", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
     }
